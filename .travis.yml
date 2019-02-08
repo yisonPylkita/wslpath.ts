@@ -1,10 +1,9 @@
 language: nodejs
 node_js:
-  - lts/*
+  - '8'
 
 before_script:
   - npm install
 
 script:
   - npm run unit
-
