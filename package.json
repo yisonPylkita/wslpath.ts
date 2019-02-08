@@ -1,0 +1,20 @@
+{
+  "name": "wslpath",
+  "version": "0.1.0",
+  "description": "Translate URIs between WSL and Windows",
+  "main": "src/index.ts",
+  "private": false,
+  "scripts": {
+    "unit": "mocha --require ts-node/register test/**/*.ts",
+    "build": "node build/build.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "3.3.3",
+    "ts-node": "8.0.2",
+    "mocha": "5.2.0",
+    "chai": "4.2.0",
+    "@types/mocha": "5.2.0",
+    "@types/chai": "4.1.7"
+  }
+}
