@@ -27,6 +27,8 @@ function runUnitTestWindowsToWsl(path: string): Boolean {
 describe('Translate URIs from WSL to Windows', () => {
     it('Should give a valid path', () => {
         expect(runUnitTestWslToWindows("")).equal(true);
+        expect(runUnitTestWslToWindows("/mnt/c")).equal(true);
+        expect(runUnitTestWslToWindows("/mnt/d")).equal(true);
     });
 });
 
