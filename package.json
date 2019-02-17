@@ -10,8 +10,7 @@
   },
   "private": false,
   "scripts": {
-    "unit": "mocha --require ts-node/register test/**/*.ts",
-    "build": "node build/build.js"
+    "unit": "mocha --require ts-node/register test/**/*.ts"
   },
   "dependencies": {},
   "devDependencies": {

@@ -1,18 +1,28 @@
 export function uriWslToWindows(wslUri: string): string {
   let uriSegments = wslUri.split('/');
-  if (uriSegments.length < 4 || uriSegments[0].length != 0 || uriSegments[1] != 'mnt') {
+  if (uriSegments.length < 3 || uriSegments[0].length != 0 || uriSegments[1] != 'mnt') {
     return '';
+  }
+  uriSegments.shift();
+  if (uriSegments[uriSegments.length - 1] == '') {
+    uriSegments.pop();
   }
 
-  let disc_letter = uriSegments[2];
-  if (!/^[a-zA-Z]+$/.test(disc_letter)) {
+  let disc_letter = uriSegments[1].toUpperCase();
+  if (!/^[A-Z]+$/.test(disc_letter)) {
     return '';
   }
+  uriSegments.shift(); // remove mnt
+  uriSegments.shift(); // remove disc letter
 
   let uriWindows = disc_letter + ':';
   uriSegments.forEach(pathPart => {
     uriWindows += '\\' + pathPart;
   });
+
+  if (uriWindows.length == 2) {
+    uriWindows += '\\'; // case where we have C: in result but we want C:\
+  }
   return uriWindows;
 }
 
