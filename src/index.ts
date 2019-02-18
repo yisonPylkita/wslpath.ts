@@ -23,6 +23,10 @@ export function uriWslToWindows(wslUri: string): string {
   if (uriWindows.length == 2) {
     uriWindows += '\\'; // case where we have C: in result but we want C:\
   }
+
+  if (wslUri[wslUri.length - 1] == '/')
+    uriWindows += '\\';
+
   return uriWindows;
 }
 
@@ -46,5 +50,9 @@ export function uriWindowsToWsl(windowsUri: string): string {
   uriSegments.forEach(pathPart => {
     uriWsl += '/' + pathPart;
   });
+
+  if (windowsUri[windowsUri.length - 1] == '\\')
+    uriWsl += '/';
+
   return uriWsl;
 }

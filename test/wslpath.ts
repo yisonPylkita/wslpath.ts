@@ -25,6 +25,12 @@ describe('Translate URIs from WSL to Windows', () => {
 
 describe('Translate URIs from Windows to WSL', () => {
     it('Should give a valid path', () => {
-        // expect(uriWindowsToWsl("C:\\")).equal(pathWindowsToWslNative("/mnt/c"));
+        expect(uriWindowsToWsl("C:\\")).equal(pathWindowsToWslNative("C:\\"));
+        expect(uriWindowsToWsl("D:\\")).equal(pathWindowsToWslNative("D:\\"));
+        expect(uriWindowsToWsl("C:\\file.txt")).equal(pathWindowsToWslNative("C:\\file.txt"));
+        expect(uriWindowsToWsl("C:\\directory")).equal(pathWindowsToWslNative("C:\\directory"));
+        expect(uriWindowsToWsl("C:\\directory\\")).equal(pathWindowsToWslNative("C:\\directory\\"));
+        expect(uriWindowsToWsl("C:\\Users\\arlen\\pj\\kudu")).equal(pathWindowsToWslNative("C:\\Users\\arlen\\pj\\kudu"));
+        expect(uriWindowsToWsl("C:\\Right & Left\\stuff")).equal(pathWindowsToWslNative("C:\\Right & Left\\stuff"));
     });
 });
