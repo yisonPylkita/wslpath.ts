@@ -32,10 +32,15 @@ export function uriWindowsToWsl(windowsUri: string): string {
     return '';
   }
 
-  let disc_letter = uriSegments[0];
+  if (uriSegments[uriSegments.length - 1] == '') {
+    uriSegments.pop();
+  }
+
+  let disc_letter = uriSegments[0][0].toLowerCase();
   if (!/^[a-zA-Z]+$/.test(disc_letter)) {
     return '';
   }
+  uriSegments.shift();
 
   let uriWsl = '/mnt/' + disc_letter;
   uriSegments.forEach(pathPart => {
