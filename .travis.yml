@@ -1,9 +1,12 @@
-language: nodejs
-node_js:
-  - '8'
+os: windows
 
-before_script:
-  - npm install
+language: shell
 
 script:
-  - npm run unit
+- curl -L -o ubuntu-1804.zip https://aka.ms/wsl-ubuntu-1804
+- powershell.exe -NoProfile -Command "Expand-Archive -Path ubuntu-1804.zip -DestinationPath Ubuntu"
+- Ubuntu/ubuntu1804.exe install --root
+- wsl.exe apt update
+- wsl.exe apt install nodejs -y
+- wsl.exe npm install
+- wsl.exe npm run unit

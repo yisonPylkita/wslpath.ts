@@ -20,6 +20,7 @@ describe('Translate URIs from WSL to Windows', () => {
         expect(uriWslToWindows("/mnt/c")).equal(pathWslToWindowsNative("/mnt/c"));
         expect(uriWslToWindows("/mnt/d")).equal(pathWslToWindowsNative("/mnt/d"));
         expect(uriWslToWindows("/mnt/c/Users/arlen/pj/kudu")).equal(pathWslToWindowsNative("/mnt/c/Users/arlen/pj/kudu"));
+        expect(uriWslToWindows("/home/arlen/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.6.5/src/lib.rs")).equal(pathWslToWindowsNative("/home/arlen/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.6.5/src/lib.rs"));
     });
 });
 
