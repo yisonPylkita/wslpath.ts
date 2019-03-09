@@ -7,6 +7,7 @@ script:
 - powershell.exe -NoProfile -Command "Expand-Archive -Path ubuntu-1804.zip -DestinationPath Ubuntu"
 - Ubuntu/ubuntu1804.exe install --root
 - wsl.exe apt update
-- wsl.exe apt install nodejs -y
-- wsl.exe npm install
+- wsl.exe apt install curl -y
+- wsl.exe curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+- wsl.exe nvm install --lts
 - wsl.exe npm run unit
